@@ -1,4 +1,5 @@
 import os
+import json
 import asyncio
 from telegram import Bot
 
@@ -7,13 +8,8 @@ CHAT_ID = os.getenv("CHAT_ID")
 
 bot = Bot(token=TOKEN)
 
-PRODUCTOS = [
-    "RTX 5060",
-    "RTX 5070",
-    "Ryzen 7 9700X",
-    "Samsung 990 Pro 2TB",
-    "DDR5 32GB"
-]
+with open("productos.json", "r", encoding="utf-8") as f:
+    PRODUCTOS = json.load(f)
 
 async def main():
     mensaje = "📊 REPORTE DE HARDWARE\n\n"
